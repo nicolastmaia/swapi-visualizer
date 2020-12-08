@@ -1,7 +1,15 @@
-import Home from './Views/Home';
+import Header from './Components/Header';
+import MainRouter from './Components/MainRouter';
+import Footer from './Components/Footer';
 
 function App() {
-	return <Home />;
+	return (
+		<div>
+			<Header />
+			<MainRouter />
+			<Footer />
+		</div>
+	);
 }
 
 export default App;
