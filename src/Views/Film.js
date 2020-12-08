@@ -7,7 +7,7 @@ const Film = () => {
 	const { id } = useParams();
 	const [film, setFilm] = useState({
 		loading: true,
-		data: [],
+		data: {},
 	});
 
 	const url = `https://swapi.dev/api/films/${id}`;
@@ -16,9 +16,10 @@ const Film = () => {
 		const fetchFilm = async () => {
 			try {
 				const response = await axios.get(url);
-				setFilm({ data: response.data.results, loading: false });
+				console.log(response.data);
+				setFilm({ data: response.data, loading: false });
 			} catch (error) {
-				setFilm({ data: [], loading: false });
+				setFilm({ data: {}, loading: false });
 				console.log('Deu erro', error.message);
 			}
 		};
@@ -30,11 +31,11 @@ const Film = () => {
 		if (film.loading) return 'Loading...';
 		return (
 			<>
-				<h1>{film.title}</h1>
-				<h4>{film.director}</h4>
-				<h4>{film.producer}</h4>
-				<h4>{film.episode_id}</h4>
-				<h4>{film.release_date}</h4>
+				<h1>{film.data.title}</h1>
+				<h4>{film.data.director}</h4>
+				<h4>{film.data.producer}</h4>
+				<h4>{film.data.episode_id}</h4>
+				<h4>{film.data.release_date}</h4>
 				<CharacterList></CharacterList>
 			</>
 		)
