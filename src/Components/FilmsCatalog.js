@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Film from './Film';
+import FilmCard from './FilmCard';
 
 const FilmsCatalog = () => {
 	const [films, setFilms] = useState({
@@ -8,12 +8,12 @@ const FilmsCatalog = () => {
 		loading: true,
 	});
 
-    const filmsUrl = 'https://swapi.dev/api/films';
+    const url = 'https://swapi.dev/api/films';
     
 	useEffect(() => {
 		const fetchFilms = async () => {
 			try {
-				const response = await axios.get(filmsUrl);
+				const response = await axios.get(url);
 				setFilms({ data: response.data.results, loading: false });
 			} catch (error) {
 				setFilms({ data: [], loading: false });
@@ -22,16 +22,16 @@ const FilmsCatalog = () => {
 		};
 
 		fetchFilms();
-    }, [filmsUrl]);
+    }, [url]);
     
     const renderContent= () => {
         if (films.loading) return 'Loading...'
-        return films.data.map((film)=>{return <Film film = {film}/>})
+        return films.data.map((film)=>{return <FilmCard key = {film.episode_id}film = {film}/>})
     }
 
     const content = renderContent();
 
-	return <div>{films.loading ? 'Loading...' : content} </div>;
+	return <div>{films.loading ? 'Loading...' : content} </div>
 };
 
 export default FilmsCatalog;
