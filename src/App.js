@@ -1,10 +1,10 @@
+import Footer from './Components/Footer';
 import Header from './Components/Header';
 import MainRouter from './Components/MainRouter';
-import Footer from './Components/Footer';
 
 function App() {
 	return (
-		<div>
+		<div className='h-screen bg-star-wars-purple'>
 			<Header />
 			<MainRouter />
 			<Footer />

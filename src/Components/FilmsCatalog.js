@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import FilmCard from './FilmCard';
+import Loader from './Loader';
 
 const FilmsCatalog = () => {
 	const [films, setFilms] = useState({
@@ -25,13 +26,14 @@ const FilmsCatalog = () => {
     }, [url]);
     
     const renderContent= () => {
-        if (films.loading) return 'Loading...'
+		if (films.loading) return <Loader/>;
+
         return films.data.map((film)=>{return <FilmCard key = {film.episode_id}film = {film}/>})
     }
 
     const content = renderContent();
 
-	return <div>{films.loading ? 'Loading...' : content} </div>
+	return <div className = 'p-4 flex flex-row justify-between'>{content}</div>;
 };
 
 export default FilmsCatalog;
