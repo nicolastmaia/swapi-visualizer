@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Film from '../Pages/Films';
+import Film from '../Pages/Film';
 import Home from '../Pages/Home';
 import Footer from './Footer';
 
