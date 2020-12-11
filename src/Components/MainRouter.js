@@ -1,24 +1,24 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Character from '../Views/Character';
-import Film from '../Views/Film';
-import Home from '../Views/Home';
+import Film from '../Pages/Films';
+import Home from '../Pages/Home';
+import Footer from './Footer';
 
 const MainRouter = () => {
 	return (
-		<Router>
-			<Switch>
-				<Route exact path='/'>
-					<Home />
-				</Route>
-				<Route path='/films/:id'>
-					<Film />
-				</Route>
-				<Route path='/character/:id'>
-					<Character />
-				</Route>
-			</Switch>
-		</Router>
+		<div style={{ flex: 1, justifyContent: 'center' }}>
+			<Router>
+				<Switch>
+					<Route exact path='/'>
+						<Home />
+					</Route>
+					<Route path='/films/:id'>
+						<Film />
+					</Route>
+				</Switch>
+				<Footer />
+			</Router>
+		</div>
 	);
 };
 
