@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "antd": "^4.9.2",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.0",
     "postcss": "^7.0.35",
@@ -20,9 +21,9 @@
   "scripts": {
     "build:css": "postcss src/index.css -o src/tailwind.css",
     "watch:css": "postcss src/index.css -o src/tailwind.css -w",
-     "start": "craco start",
-     "build": "craco build",
-     "test": "craco test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
