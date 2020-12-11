@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CharacterList from '../Components/CharactersList';
-import { Divider, Spin } from 'antd';
+import { Divider } from 'antd';
 import { Typography } from 'antd';
+import Loader from '../Components/Loader';
 
 const { Title } = Typography;
 
@@ -32,7 +33,7 @@ const Film = () => {
 	}, [url]);
 
 	const renderContent = () => {
-		if (film.loading) return <Spin size='large' />;
+		if (film.loading) return <Loader/>;
 		return (
 			<div style={{ padding: '1rem' }}>
 				<div>
@@ -52,7 +53,7 @@ const Film = () => {
 				</div>
 				<Divider />
 				<Title style={{ color: 'white' }} level={3}>
-					{'Character List'}
+					{'Characters List'}
 				</Title>
 				<CharacterList charactersEndpoints={film.data.characters} />
 			</div>

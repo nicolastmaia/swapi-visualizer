@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { List, Spin } from 'antd';
+import { List } from 'antd';
 import CharacterCard from './CharacterCard';
+import Loader from './Loader';
 
 const CharacterList = ({ charactersEndpoints }) => {
 	const [characters, setCharacters] = useState({
@@ -33,7 +34,7 @@ const CharacterList = ({ charactersEndpoints }) => {
 	}, []);
 
 	const renderContent = () => {
-		if (characters.loading) return <Spin size='large' />;
+		if (characters.loading) return <Loader/>;
 
 		return (
 			<List
