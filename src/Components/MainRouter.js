@@ -2,23 +2,30 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Film from '../Pages/Film';
 import Home from '../Pages/Home';
-import Footer from './Footer';
+import MyFooter from './MyFooter';
+import MyHeader from './MyHeader';
+import { Layout } from 'antd';
+
+const { Content } = Layout;
 
 const MainRouter = () => {
 	return (
-		<div style={{ flex: 1, justifyContent: 'center' }}>
-			<Router>
-				<Switch>
-					<Route exact path='/'>
-						<Home />
-					</Route>
-					<Route path='/films/:id'>
-						<Film />
-					</Route>
-				</Switch>
-				<Footer />
-			</Router>
-		</div>
+		<Router>
+			<Layout>
+				<MyHeader />
+				<Content style={{ padding: 24, backgroundColor: '#20164d' }}>
+					<Switch>
+						<Route exact path='/'>
+							<Home />
+						</Route>
+						<Route path='/films/:id'>
+							<Film />
+						</Route>
+					</Switch>
+				</Content>
+				<MyFooter />
+			</Layout>
+		</Router>
 	);
 };
 

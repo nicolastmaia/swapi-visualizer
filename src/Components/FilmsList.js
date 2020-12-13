@@ -32,16 +32,15 @@ const FilmsList = () => {
 		return (
 			<List
 				grid={{
-					gutter: 16,
+					gutter: [24, 24],
 					xs: 1,
-					sm: 2,
+					sm: 3,
 					md: 4,
-					lg: 4,
+					lg: 5,
 					xl: 6,
-					xxl: 3,
 				}}
-				className='flex justify-evenly'
 				dataSource={films.data}
+				style={{lignItems: 'center', justifyContent: 'center' }}
 				renderItem={(film) => (
 					<List.Item>
 						<FilmCard key={film.episode_id} film={film} />
@@ -49,13 +48,11 @@ const FilmsList = () => {
 				)}
 			/>
 		);
-
-		// return films.data.map((film)=>{return <FilmCard key = {film.episode_id}film = {film}/>})
 	};
 
 	const content = renderContent();
 
-	return <div className='p-4'>{content}</div>;
+	return content;
 };
 
 export default FilmsList;

@@ -4,7 +4,7 @@ import { List } from 'antd';
 import CharacterCard from './CharacterCard';
 import Loader from './Loader';
 
-const CharacterList = ({ charactersEndpoints }) => {
+const CharactersList = ({ charactersEndpoints }) => {
 	const [characters, setCharacters] = useState({
 		data: [],
 		loading: true,
@@ -27,25 +27,23 @@ const CharacterList = ({ charactersEndpoints }) => {
 			await charactersEndpoints.forEach((endpoint) => {
 				fetchCharacter(endpoint);
 			});
-			console.log('hey:' + tmpCharacters.length);
 			setCharacters({ data: tmpCharacters, loading: false });
 		};
 		fetchCharacters();
 	}, []);
 
 	const renderContent = () => {
-		if (characters.loading) return <Loader/>;
+		if (characters.loading) return <Loader />;
 
 		return (
 			<List
 				grid={{
-					gutter: 16,
+					gutter: [16, 16],
 					xs: 1,
 					sm: 2,
 					md: 4,
-					lg: 4,
+					lg: 5,
 					xl: 6,
-					xxl: 3,
 				}}
 				dataSource={characters.data}
 				renderItem={(character) => (
@@ -62,4 +60,4 @@ const CharacterList = ({ charactersEndpoints }) => {
 	return <div>{content}</div>;
 };
 
-export default CharacterList;
+export default CharactersList;

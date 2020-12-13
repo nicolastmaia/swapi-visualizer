@@ -1,11 +1,9 @@
-import Header from './Components/Header';
 import MainRouter from './Components/MainRouter';
 import 'antd/dist/antd.css';
 
 function App() {
 	return (
-		<div className='relative pb-3 min-h-screen border-b bg-star-wars-purple'>
-			<Header />
+		<div style={{ position: 'relative', backgroundColor: '#20164d', minHeight: '100vh'}}>
 			<MainRouter />
 		</div>
 	);
