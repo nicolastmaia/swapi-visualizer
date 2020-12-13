@@ -57,7 +57,7 @@ const CharactersList = ({ charactersEndpoints }) => {
 
 	const content = renderContent();
 
-	return <div>{content}</div>;
+	return content;
 };
 
 export default CharactersList;

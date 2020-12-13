@@ -13,12 +13,12 @@ const MainRouter = () => {
 		<Router>
 			<Layout>
 				<MyHeader />
-				<Content style={{ padding: 24, backgroundColor: '#20164d' }}>
+				<Content style={styles.content}>
 					<Switch>
 						<Route exact path='/'>
 							<Home />
 						</Route>
-						<Route path='/films/:id'>
+						<Route path='/films/:resourceId'>
 							<Film />
 						</Route>
 					</Switch>
@@ -30,3 +30,7 @@ const MainRouter = () => {
 };
 
 export default MainRouter;
+
+const styles = {
+	content: { padding: 24, backgroundColor: '#20164d' },
+};

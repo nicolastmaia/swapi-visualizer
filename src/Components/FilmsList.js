@@ -40,7 +40,7 @@ const FilmsList = () => {
 					xl: 6,
 				}}
 				dataSource={films.data}
-				style={{lignItems: 'center', justifyContent: 'center' }}
+				style={styles.list}
 				renderItem={(film) => (
 					<List.Item>
 						<FilmCard key={film.episode_id} film={film} />
@@ -56,3 +56,7 @@ const FilmsList = () => {
 };
 
 export default FilmsList;
+
+const styles = {
+	list: { justifyContent: 'center' },
+};

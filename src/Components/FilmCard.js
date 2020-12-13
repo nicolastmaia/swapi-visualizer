@@ -10,22 +10,18 @@ const { Title } = Typography;
 const FilmCard = ({ film }) => {
 
 	const resourceId =  extractResourceIdFrom(film.url)
-
+	const resourceRoute = `/films/${resourceId}`;
+	
 	return (
-		<Link to={`/films/${resourceId}`}>
-			<Card
-				hoverable
-				bordered={false}
-				style={{ maxHeight: '100%', backgroundColor: '#3a3f41', width: '90%' }}
-				cover={<img alt='example' src={Banner} />}
-			>
-				<Title ellipsis level={4} style={{ color: '#d6d6d6' }}>
+		<Link to={resourceRoute}>
+			<Card hoverable bordered={false} style={styles.card} cover={<img alt='example' src={Banner} />}>
+				<Title ellipsis level={4} style={styles.cardTitle}>
 					{film.title}
 				</Title>
-				<Title level={5} style={{ color: '#d6d6d6' }}>
+				<Title level={5} style={styles.cardTitle}>
 					Episode: {film.episode_id}
 				</Title>
-				<Button block style={{ backgroundColor: '#1c009e', borderColor: '#1c009e', color: '#d6d6d6', marginTop: '1rem' }} type='primary'>
+				<Button block style={styles.cardButton} type='primary'>
 					More
 				</Button>
 			</Card>
@@ -34,3 +30,9 @@ const FilmCard = ({ film }) => {
 };
 
 export default FilmCard;
+
+const styles = {
+	card: { maxHeight: '100%', backgroundColor: '#3a3f41', width: '90%' },
+	cardTitle:{ color: '#d6d6d6' },
+	cardButton:{ backgroundColor: '#1c009e', borderColor: '#1c009e', color: '#d6d6d6', marginTop: '1rem' }
+};
