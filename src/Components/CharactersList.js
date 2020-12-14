@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { List } from 'antd';
 import CharacterCard from './CharacterCard';
 import Loader from './Loader';
+import showErrorModal from '../utils/showErrorModal';
 
 const CharactersList = ({ charactersEndpoints }) => {
 	const [characters, setCharacters] = useState({
@@ -12,24 +13,30 @@ const CharactersList = ({ charactersEndpoints }) => {
 
 	useEffect(() => {
 		let tmpCharacters = [];
+		let errorCount = 0;
+
 		const fetchCharacter = async (endpoint) => {
-			try {
-				const response = await axios.get(endpoint);
-				return [response.data, ...tmpCharacters];
-			} catch (error) {
-				console.log('Deu erro', error.message);
-			}
+			const response = await axios.get(endpoint);
+			return [response.data, ...tmpCharacters];
 		};
-		const fetchCharacters = async () => {
+
+		const saveCharactersToState = async () => {
 			for (const endpoint of charactersEndpoints) {
-				tmpCharacters = await fetchCharacter(endpoint);
+				try {
+					tmpCharacters = await fetchCharacter(endpoint);
+					console.log(tmpCharacters);
+				} catch (error) {
+					errorCount++;
+				}
 			}
-			await charactersEndpoints.forEach((endpoint) => {
-				fetchCharacter(endpoint);
-			});
 			setCharacters({ data: tmpCharacters, loading: false });
 		};
-		fetchCharacters();
+
+		saveCharactersToState();
+
+		if (errorCount > 0) {
+			showErrorModal(errorCount);
+		}
 	}, []);
 
 	const renderContent = () => {
