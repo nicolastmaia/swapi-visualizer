@@ -1,9 +1,9 @@
+import { List } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { List } from 'antd';
+import showErrorModal from '../utils/showErrorModal';
 import CharacterCard from './CharacterCard';
 import Loader from './Loader';
-import showErrorModal from '../utils/showErrorModal';
 
 const CharactersList = ({ charactersEndpoints }) => {
 	const [characters, setCharacters] = useState({

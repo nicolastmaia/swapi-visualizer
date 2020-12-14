@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react';
 import { Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
+import React, { useEffect } from 'react';
 
 const CharacterCard = ({ character }) => {
-
-	useEffect(()=>{
-		if (character.mass != 'unknown'){
-			character.mass = character.mass + 'kg'
+	useEffect(() => {
+		if (character.mass != 'unknown') {
+			character.mass = character.mass + 'kg';
 		}
 
-		if (character.height != 'unknown'){
-			character.height = character.height + 'cm'
+		if (character.height != 'unknown') {
+			character.height = character.height + 'cm';
 		}
-	},[])
-	
+	}, []);
+
 	return (
 		<Card bordered={false} title={character.name} style={styles.card}>
 			<div style={styles.cardText}>

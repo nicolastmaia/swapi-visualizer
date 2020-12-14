@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { List } from 'antd';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import showErrorModal from '../utils/showErrorModal';
 import FilmCard from './FilmCard';
 import Loader from './Loader';
-import { List } from 'antd';
-import showErrorModal from '../utils/showErrorModal';
 
 const FilmsList = () => {
 	const [films, setFilms] = useState({

@@ -2,9 +2,7 @@ import React from 'react';
 import FilmsList from '../Components/FilmsList';
 
 const Home = () => {
-	return (
-			<FilmsList />
-	);
+	return <FilmsList />;
 };
 
 export default Home;

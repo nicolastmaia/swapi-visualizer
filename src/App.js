@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 
 function App() {
 	return (
-		<div style={{ position: 'relative', backgroundColor: '#20164d', minHeight: '100vh'}}>
+		<div style={{ position: 'relative', backgroundColor: '#20164d', minHeight: '100vh' }}>
 			<MainRouter />
 		</div>
 	);

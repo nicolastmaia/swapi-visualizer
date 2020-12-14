@@ -1,10 +1,9 @@
+import { Divider, Typography } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CharactersList from '../Components/CharactersList';
-import { Divider } from 'antd';
 import Loader from '../Components/Loader';
-import { Typography } from 'antd';
 import showErrorModal from '../utils/showErrorModal';
 
 const { Title } = Typography;
@@ -23,7 +22,7 @@ const Film = () => {
 			const response = await axios.get(resourceUrl);
 			return response.data;
 		};
-		
+
 		const saveFilmInfoToState = async () => {
 			try {
 				const filmInfo = await fetchFilm();

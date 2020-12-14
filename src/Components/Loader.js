@@ -1,5 +1,5 @@
-import React from 'react';
 import { Spin } from 'antd';
+import React from 'react';
 const Loader = () => {
 	return (
 		<div style={styles.loader}>
@@ -11,5 +11,5 @@ const Loader = () => {
 export default Loader;
 
 const styles = {
-	loader: { display: 'flex', justifyContent: 'center', margin: '1rem'},
+	loader: { display: 'flex', justifyContent: 'center', margin: '1rem' },
 };
