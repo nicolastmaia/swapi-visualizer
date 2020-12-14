@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'antd';
-import Banner from '../assets/img/teste.jpg';
-import { Typography } from 'antd';
-import { extractResourceIdFrom } from '../utils/extractResourceIdFrom';
-
+import { Typography, Image } from 'antd';
+import extractResourceIdFrom from '../utils/extractResourceIdFrom';
+import getFilmBanner from '../utils/getFilmBanner';
 const { Title } = Typography;
 
 const FilmCard = ({ film }) => {
-
-	const resourceId =  extractResourceIdFrom(film.url)
+	const resourceId = extractResourceIdFrom(film.url);
 	const resourceRoute = `/films/${resourceId}`;
-	
+	const [banner, setBanner] = useState(null);
+
+	useEffect(() => {
+		const tmp = getFilmBanner(film.episode_id);
+		setBanner(tmp);
+	}, []);
+
 	return (
 		<Link to={resourceRoute}>
-			<Card hoverable bordered={false} style={styles.card} cover={<img alt='example' src={Banner} />}>
+			<Card hoverable bordered={false} style={styles.card} cover={<Image alt='example' src={banner} />}>
 				<Title ellipsis level={4} style={styles.cardTitle}>
 					{film.title}
 				</Title>
@@ -33,6 +37,6 @@ export default FilmCard;
 
 const styles = {
 	card: { maxHeight: '100%', backgroundColor: '#3a3f41', width: '90%' },
-	cardTitle:{ color: '#d6d6d6' },
-	cardButton:{ backgroundColor: '#1c009e', borderColor: '#1c009e', color: '#d6d6d6', marginTop: '1rem' }
+	cardTitle: { color: '#d6d6d6' },
+	cardButton: { backgroundColor: '#1c009e', borderColor: '#1c009e', color: '#d6d6d6', marginTop: '1rem' },
 };
