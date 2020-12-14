@@ -3,6 +3,7 @@ import axios from 'axios';
 import FilmCard from './FilmCard';
 import Loader from './Loader';
 import { List } from 'antd';
+import showErrorModal from '../utils/showErrorModal';
 
 const FilmsList = () => {
 	const [films, setFilms] = useState({
@@ -10,11 +11,11 @@ const FilmsList = () => {
 		loading: true,
 	});
 
-	const filmsUrl = 'https://swapi.dev/api/films';
+	const resourceUrl = 'https://swapi.dev/api/films';
 
 	useEffect(() => {
 		const fetchFilms = async () => {
-			const response = await axios.get(filmsUrl);
+			const response = await axios.get(resourceUrl);
 			return response.data.results;
 		};
 		const orderFilms = (arr) => {
@@ -24,18 +25,19 @@ const FilmsList = () => {
 			return tmp;
 		};
 
-		const saveFilmsInState = async () => {
+		const saveFilmsListInState = async () => {
 			try {
 				const unorderedFilms = await fetchFilms();
 				const orderedFilms = orderFilms(unorderedFilms);
 				setFilms({ data: orderedFilms, loading: false });
 			} catch (error) {
 				setFilms({ data: [], loading: false });
+				showErrorModal();
 			}
 		};
 
-		saveFilmsInState();
-	}, [filmsUrl]);
+		saveFilmsListInState();
+	}, [resourceUrl]);
 
 	const renderContent = () => {
 		if (films.loading) return <Loader />;
