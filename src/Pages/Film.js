@@ -5,6 +5,7 @@ import CharactersList from '../Components/CharactersList';
 import { Divider } from 'antd';
 import Loader from '../Components/Loader';
 import { Typography } from 'antd';
+import showErrorModal from '../utils/showErrorModal';
 
 const { Title } = Typography;
 
@@ -19,16 +20,21 @@ const Film = () => {
 
 	useEffect(() => {
 		const fetchFilm = async () => {
+			const response = await axios.get(resourceUrl);
+			return response.data;
+		};
+		
+		const saveFilmInfoInState = async () => {
 			try {
-				const response = await axios.get(resourceUrl);
-				setFilm({ data: response.data, loading: false });
+				const filmInfo = await fetchFilm();
+				setFilm({ data: filmInfo, loading: false });
 			} catch (error) {
 				setFilm({ data: {}, loading: false });
-				console.log('Deu erro', error.message);
+				showErrorModal();
 			}
 		};
 
-		fetchFilm();
+		saveFilmInfoInState();
 	}, [resourceUrl]);
 
 	const renderContent = () => {
