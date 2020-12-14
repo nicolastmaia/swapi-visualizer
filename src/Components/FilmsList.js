@@ -16,6 +16,7 @@ const FilmsList = () => {
 	useEffect(() => {
 		const fetchFilms = async () => {
 			const response = await axios.get(resourceUrl);
+			console.log(response);
 			return response.data.results;
 		};
 		const orderFilms = (arr) => {
@@ -25,7 +26,7 @@ const FilmsList = () => {
 			return tmp;
 		};
 
-		const saveFilmsListInState = async () => {
+		const saveFilmsListToState = async () => {
 			try {
 				const unorderedFilms = await fetchFilms();
 				const orderedFilms = orderFilms(unorderedFilms);
@@ -36,7 +37,7 @@ const FilmsList = () => {
 			}
 		};
 
-		saveFilmsListInState();
+		saveFilmsListToState();
 	}, [resourceUrl]);
 
 	const renderContent = () => {

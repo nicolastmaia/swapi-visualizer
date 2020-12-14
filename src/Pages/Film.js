@@ -24,7 +24,7 @@ const Film = () => {
 			return response.data;
 		};
 		
-		const saveFilmInfoInState = async () => {
+		const saveFilmInfoToState = async () => {
 			try {
 				const filmInfo = await fetchFilm();
 				setFilm({ data: filmInfo, loading: false });
@@ -34,7 +34,7 @@ const Film = () => {
 			}
 		};
 
-		saveFilmInfoInState();
+		saveFilmInfoToState();
 	}, [resourceUrl]);
 
 	const renderContent = () => {
