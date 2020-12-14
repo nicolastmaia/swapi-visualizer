@@ -10,21 +10,32 @@ const FilmsList = () => {
 		loading: true,
 	});
 
-	const url = 'https://swapi.dev/api/films';
+	const filmsUrl = 'https://swapi.dev/api/films';
 
 	useEffect(() => {
 		const fetchFilms = async () => {
+			const response = await axios.get(filmsUrl);
+			return response.data.results;
+		};
+		const orderFilms = (arr) => {
+			const tmp = arr.sort(function (a, b) {
+				return a.episode_id - b.episode_id;
+			});
+			return tmp;
+		};
+
+		const saveFilmsInState = async () => {
 			try {
-				const response = await axios.get(url);
-				setFilms({ data: response.data.results, loading: false });
+				const unorderedFilms = await fetchFilms();
+				const orderedFilms = orderFilms(unorderedFilms);
+				setFilms({ data: orderedFilms, loading: false });
 			} catch (error) {
 				setFilms({ data: [], loading: false });
-				console.log('Deu erro', error.message);
 			}
 		};
 
-		fetchFilms();
-	}, [url]);
+		saveFilmsInState();
+	}, [filmsUrl]);
 
 	const renderContent = () => {
 		if (films.loading) return <Loader />;
