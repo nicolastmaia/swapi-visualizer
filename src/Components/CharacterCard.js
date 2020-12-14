@@ -2,12 +2,16 @@ import { Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import React, { useEffect } from 'react';
 
+// cartão com os dados de um personagem individual
 const CharacterCard = ({ character }) => {
+	// função que é executada toda em toda primeira renderização do componente
 	useEffect(() => {
+		// se o campo de massa do personagem não for desconhecido, acrescentar um sulfixo com a unidade de medida usada
 		if (character.mass != 'unknown') {
 			character.mass = character.mass + 'kg';
 		}
 
+		// se o campo de altura do personagem não for desconhecido, acrescentar um sulfixo com a unidade de medida usada
 		if (character.height != 'unknown') {
 			character.height = character.height + 'cm';
 		}

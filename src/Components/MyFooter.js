@@ -3,6 +3,7 @@ import { React } from 'react';
 
 const { Footer } = Layout;
 
+// apenas um simples rodapé
 const MyFooter = () => {
 	return <Footer style={styles.footer}>Open Source</Footer>;
 };

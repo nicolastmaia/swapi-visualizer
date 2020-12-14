@@ -5,25 +5,35 @@ import extractResourceIdFrom from '../utils/extractResourceIdFrom';
 import getFilmBanner from '../utils/getFilmBanner';
 const { Title } = Typography;
 
+// cartão com o banner, nome e episódio de um filme individual
 const FilmCard = ({ film }) => {
 	const resourceId = extractResourceIdFrom(film.url);
+
+	// rota local do filme que este cartão representa
 	const resourceRoute = `/films/${resourceId}`;
+
+	// banner do filme que este cartão representa
 	const [banner, setBanner] = useState(null);
 
+	// função que é executada toda em toda primeira renderização do componente
 	useEffect(() => {
+		//função getFilmBanner sendo chamada para buscar o banner correto do filme de acordo com seu episódio
 		const tmp = getFilmBanner(film.episode_id);
 		setBanner(tmp);
 	}, []);
 
 	return (
+		// o componente <Link> com a rota local referente ao filme que este cartão representa
 		<Link to={resourceRoute}>
 			<Card hoverable bordered={false} style={styles.card} cover={<Image alt='example' src={banner} />}>
 				<Title ellipsis level={4} style={styles.cardTitle}>
 					{film.title}
 				</Title>
+
 				<Title level={5} style={styles.cardTitle}>
 					Episode: {film.episode_id}
 				</Title>
+
 				<Button block style={styles.cardButton} type='primary'>
 					More
 				</Button>

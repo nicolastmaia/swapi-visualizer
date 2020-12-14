@@ -1,6 +1,8 @@
 import { Modal } from 'antd';
 
+// função que retorna um modal de erro da biblioteca antd
 function showErrorModal(numberOfErrors = '') {
+	// final do título do modal.
 	let messageEnd;
 
 	if (numberOfErrors == 1) {

@@ -8,21 +8,28 @@ import showErrorModal from '../utils/showErrorModal';
 
 const { Title } = Typography;
 
+// página de cada filme individual. Contém as informações mais relevantes do filme em questão e também a lista de personagens do filme.
 const Film = () => {
+	// id do filme a ser usado para pegar seus dados individuais da SWAPI
 	const { resourceId } = useParams();
+
 	const [film, setFilm] = useState({
 		loading: true,
 		data: {},
 	});
 
+	// endpoint com os dados do filme na SWAPI
 	const resourceUrl = `https://swapi.dev/api/films/${resourceId}`;
 
+	// função que é executada toda em toda primeira renderização da página.
 	useEffect(() => {
+		// função que utiliza o axios para pegar os dados do filme da SWAPI
 		const fetchFilm = async () => {
 			const response = await axios.get(resourceUrl);
 			return response.data;
 		};
 
+		// função que busca e salva no estado os dados buscados na SWAPi. Se der algum erro, um modal com uma mensagem de erro é mostrado.
 		const saveFilmInfoToState = async () => {
 			try {
 				const filmInfo = await fetchFilm();
@@ -37,9 +44,12 @@ const Film = () => {
 	}, [resourceUrl]);
 
 	const renderContent = () => {
+		// retorna um ícone de carregamento enquanto o recurso buscado não estiver pronto.
 		if (film.loading) return <Loader />;
+
 		return (
 			<div>
+				{/* informações sobre o filme */}
 				<div style={{ display: 'flex', flexFlow: 'column', alignItems: 'center' }}>
 					<Title style={styles.filmTitle}>{film.data.title + ' - Episode ' + film.data.episode_id}</Title>
 				</div>
@@ -57,11 +67,15 @@ const Film = () => {
 						{'Producer: ' + film.data.producer}
 					</Title>
 				</div>
+
 				<Divider />
+
+				{/* Lista de personagens do filme */}
 				<Title style={styles.filmInfo} level={2}>
 					{'Characters List'}
 				</Title>
 				<Divider />
+				{/* componente lista de personagens. recebe como prop um array contendo os endpoints de cada personagem na SWAPI */}
 				<CharactersList charactersEndpoints={film.data.characters} />
 			</div>
 		);

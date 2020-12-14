@@ -5,6 +5,7 @@ import banner04 from '../assets/img/star-wars-04.jpg';
 import banner05 from '../assets/img/star-wars-05.jpg';
 import banner06 from '../assets/img/star-wars-06.jpg';
 
+// função que retorna o banner do filme correto baseado no seu número de episódio.
 const getFilmBanner = (filmEpisodeId) => {
 	let banner;
 

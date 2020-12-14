@@ -8,6 +8,7 @@ import MyHeader from './MyHeader';
 
 const { Content } = Layout;
 
+// component que permite a troca de páginas ao clicarmos nos componentes que possuem <Link> como wrapper
 const MainRouter = () => {
 	return (
 		<Router>
@@ -15,9 +16,11 @@ const MainRouter = () => {
 				<MyHeader />
 				<Content style={styles.content}>
 					<Switch>
+						{/* rota que nos leva ã página inicial */}
 						<Route exact path='/'>
 							<Home />
 						</Route>
+						{/* rota que nos leva á página de cada filme depenendo do :resourceId colocado no componente <Link> */}
 						<Route path='/films/:resourceId'>
 							<Film />
 						</Route>
