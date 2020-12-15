@@ -12,7 +12,7 @@ const FilmsList = () => {
 		loading: true,
 	});
 
-	// endpoint com os dados de todos os filmes Star Wars na SWAPI
+	// endpoint na SWAPI com os dados de todos os filmes Star Wars
 	const resourceEndpoint = '/films';
 
 	// função que é executada toda em toda primeira renderização do componente.

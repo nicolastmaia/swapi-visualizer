@@ -28,7 +28,7 @@ const CharactersList = ({ charactersUrls }) => {
 
 		// função que busca e salva no estado os dados buscados na SWAPi
 		const saveCharactersToState = async () => {
-			// para cada endpoint no array de endpoints de personagens, a função faz uma request à SWAPI para pegar os dados daquele personagem
+			// para cada url no array de urls de personagens, a função faz uma request à SWAPI para pegar os dados daquele personagem
 			for (const url of charactersUrls) {
 				try {
 					tmpCharacters = await fetchCharacter(url);
