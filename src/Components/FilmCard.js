@@ -1,16 +1,14 @@
 import { Button, Card, Image, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import extractResourceIdFrom from '../utils/extractResourceIdFrom';
+import extractResourceRouteFromUrl from '../utils/extractResourceRouteFromUrl';
 import getFilmBanner from '../utils/getFilmBanner';
 const { Title } = Typography;
 
 // cartão com o banner, nome e episódio de um filme individual
 const FilmCard = ({ film }) => {
-	const resourceId = extractResourceIdFrom(film.url);
-
-	// rota local do filme que este cartão representa
-	const resourceRoute = `/films/${resourceId}`;
+	// extrai da url do recurso na SWAPI a rota LOCAL do filme que este cartão representa
+	const resourceRoute = extractResourceRouteFromUrl(film.url);
 
 	// banner do filme que este cartão representa
 	const [banner, setBanner] = useState(null);
