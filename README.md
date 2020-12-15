@@ -8,6 +8,9 @@ This is a web project developed using ReactJS for a internship challenge. The id
 
 In the project directory, you will run:
 
+### `npm i`
+This will install all the app dependencies listed in the package.json file\
+
 ### `npm start`
 
 This will run the app in development mode.\
