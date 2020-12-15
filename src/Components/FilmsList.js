@@ -1,5 +1,5 @@
 import { List } from 'antd';
-import axios from 'axios';
+import axiosInstance from '../utils/customAxiosInstance';
 import React, { useEffect, useState } from 'react';
 import showErrorModal from '../utils/showErrorModal';
 import FilmCard from './FilmCard';
@@ -13,14 +13,13 @@ const FilmsList = () => {
 	});
 
 	// endpoint com os dados de todos os filmes Star Wars na SWAPI
-	const resourceUrl = 'https://swapi.dev/api/films';
+	const resourceEndpoint = '/films';
 
 	// função que é executada toda em toda primeira renderização do componente.
 	useEffect(() => {
 		// função que utiliza o axios para pegar os dados dos filmes da SWAPI
 		const fetchFilms = async () => {
-			const response = await axios.get(resourceUrl);
-			console.log(response);
+			const response = await axiosInstance.get(resourceEndpoint);
 			return response.data.results;
 		};
 
@@ -45,7 +44,7 @@ const FilmsList = () => {
 		};
 
 		saveFilmsListToState();
-	}, [resourceUrl]);
+	}, []);
 
 	const renderContent = () => {
 		// retorna um ícone de carregamento enquanto o recurso buscado não estiver pronto.

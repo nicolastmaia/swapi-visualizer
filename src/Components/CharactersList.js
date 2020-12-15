@@ -6,7 +6,7 @@ import CharacterCard from './CharacterCard';
 import Loader from './Loader';
 
 // lista de personagens. recebe como prop um array contendo os endpoints de cada personagem na SWAPI
-const CharactersList = ({ charactersEndpoints }) => {
+const CharactersList = ({ charactersUrls }) => {
 	const [characters, setCharacters] = useState({
 		data: [],
 		loading: true,
@@ -21,17 +21,17 @@ const CharactersList = ({ charactersEndpoints }) => {
 		let errorCounter = 0;
 
 		// função que busca dados um personagem individual na SWAPI
-		const fetchCharacter = async (endpoint) => {
-			const response = await axios.get(endpoint);
+		const fetchCharacter = async (url) => {
+			const response = await axios.get(url);
 			return [response.data, ...tmpCharacters];
 		};
 
 		// função que busca e salva no estado os dados buscados na SWAPi
 		const saveCharactersToState = async () => {
 			// para cada endpoint no array de endpoints de personagens, a função faz uma request à SWAPI para pegar os dados daquele personagem
-			for (const endpoint of charactersEndpoints) {
+			for (const url of charactersUrls) {
 				try {
-					tmpCharacters = await fetchCharacter(endpoint);
+					tmpCharacters = await fetchCharacter(url);
 				} catch (error) {
 					//caso ocorra um erro em algum dos endpoints, a função apenas soma 1 ao counter de erros e tenta buscar os dados do próximo personagem na lista
 					errorCounter++;

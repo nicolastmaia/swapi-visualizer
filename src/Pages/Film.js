@@ -1,10 +1,10 @@
 import { Divider, Typography } from 'antd';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CharactersList from '../Components/CharactersList';
 import Loader from '../Components/Loader';
 import showErrorModal from '../utils/showErrorModal';
+import axiosInstance  from "../utils/customAxiosInstance";
 
 const { Title } = Typography;
 
@@ -19,13 +19,14 @@ const Film = () => {
 	});
 
 	// endpoint com os dados do filme na SWAPI
-	const resourceUrl = `https://swapi.dev/api/films/${resourceId}`;
+	const resourceEndpoint = `/films/${resourceId}`;
 
-	// função que é executada toda em toda primeira renderização da página.
+	// função que é executada toda em toda primeira renderização da página
 	useEffect(() => {
 		// função que utiliza o axios para pegar os dados do filme da SWAPI
 		const fetchFilm = async () => {
-			const response = await axios.get(resourceUrl);
+			const response = await axiosInstance.get(resourceEndpoint);
+			console.log(response.data)
 			return response.data;
 		};
 
@@ -41,7 +42,7 @@ const Film = () => {
 		};
 
 		saveFilmInfoToState();
-	}, [resourceUrl]);
+	}, []);
 
 	const renderContent = () => {
 		// retorna um ícone de carregamento enquanto o recurso buscado não estiver pronto.
@@ -76,7 +77,7 @@ const Film = () => {
 				</Title>
 				<Divider />
 				{/* componente lista de personagens. recebe como prop um array contendo os endpoints de cada personagem na SWAPI */}
-				<CharactersList charactersEndpoints={film.data.characters} />
+				<CharactersList charactersUrls={film.data.characters} />
 			</div>
 		);
 	};
