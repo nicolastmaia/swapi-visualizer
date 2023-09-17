@@ -1,8 +1,6 @@
 # SWAPI Index
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-This is a web project developed using ReactJS for an internship challenge. The idea of the app is to consume the [SWAPI](https://swapi.dev/api) and show some data regarding the Star Wars movies franchise and characters.
+ReactJS app developed for an internship challenge. This app is consumes the [SWAPI](https://swapi.dev/api) and shows some data about the Star Wars movies franchise and characters.
 
 # What you will need
 
