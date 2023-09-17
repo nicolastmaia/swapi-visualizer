@@ -1,6 +1,6 @@
 # SWAPI Index
 
-ReactJS app developed for a job challenge. This app consumes the [SWAPI](https://swapi.dev/api) and shows some data about the Star Wars movies franchise and characters.
+ReactJS app developed for a job challenge. It consumes the [SWAPI](https://swapi.dev/api) and shows some data about the Star Wars movies franchise and characters.
 
 # What you will need
 
