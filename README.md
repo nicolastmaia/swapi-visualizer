@@ -1,4 +1,4 @@
-# SWAPI Index
+# SWAPI Visualizer
 
 ReactJS app developed for a job challenge. It consumes the [SWAPI](https://swapi.dev/api) and shows some data about the Star Wars movies franchise and characters.
 
