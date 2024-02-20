@@ -1,15 +1,20 @@
-# SWAPI Visualizer
+![web](https://github.com/nicolastmaia/swapi-visualizer/assets/45211638/c8503642-b597-4664-9a82-8aa4f775f407)# SWAPI Visualizer
 
-ReactJS app developed for a job challenge. It consumes the [SWAPI](https://swapi.dev/api) and shows some data about the Star Wars movies franchise and characters.
+This project is a ReactJS app that consumes the [SWAPI](https://swapi.dev/api) and shows some data about the Star Wars movies and characters.
+It was the first project in which I used Grid Layout and had the chance to learn how to make a responsive design.
+
+![web](https://github.com/nicolastmaia/swapi-visualizer/assets/45211638/cd219680-0a53-44ba-a471-95a305c9103e)
+
 
 # What you will need
 
-- npm (version used: 7.0.14)
-- node (version used: 15.3.0)
+- NodeJS version 15.3.0
+
+Link to download and install above items: https://nodejs.org/es/
 
 # How to run this app
 
-After you've installed the above items, you will run the following commands in the project directory:
+After installation, you will run the following commands in the project directory:
 
 ### `npm i`
 This will install all the app dependencies listed in the package.json file.
