@@ -1,6 +1,6 @@
 # SWAPI Visualizer
 
-This project is a ReactJS app that consumes the [SWAPI](https://swapi.dev/api) and shows some data about the Star Wars movies and characters.
+This project is a ReactJS app that consumes the [SWAPI](https://swapi.dev/api) and shows some data about the Star Wars movies and characters.  
 It was the first project in which I used Grid Layout and had the chance to learn how to make a responsive design.
 
 ![web](https://github.com/nicolastmaia/swapi-visualizer/assets/45211638/cd219680-0a53-44ba-a471-95a305c9103e)
